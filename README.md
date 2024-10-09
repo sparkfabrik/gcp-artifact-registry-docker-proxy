@@ -18,3 +18,12 @@ Or via environment variables:
 ```bash
 PROXY_LISTEN=localhost:1234 PROXY_REGISTRY=https://us-docker.pkg.dv/example-project/example-repo gcp-artifact-registry-docker-proxy
 ```
+
+To configure docker daemon with Gcp Artifact Registry Docker Proxy add registry-mirror to /etc/docker/daemon.json (on linux):
+
+```bash
+{
+  "registry-mirrors": ["http://localhost:1234/<YOUR GCP PROJECT NAME>/<ARTIFACT REGISTRY NAME>/"],
+  "insecure-registries": ["localhost:1234"]
+}
+```
